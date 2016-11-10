@@ -37,7 +37,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Graphs\BreadthFirstSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sorting\BubbleSort.cs" />
+    <Compile Include="Sorting\HeapSort.cs" />
+    <Compile Include="Sorting\MergeSort.cs" />
+    <Compile Include="Sorting\QuickSort.cs" />
+    <Compile Include="Sorting\SelectionSort.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
@@ -61,8 +67,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Graphs\" />
-    <Folder Include="Sorting\" />
     <Folder Include="Trees\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
