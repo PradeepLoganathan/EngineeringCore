@@ -1,0 +1,17 @@
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.execution.desktop.dll
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\Algorithms.dll
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\Algorithms.pdb
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.abstractions.dll
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.assert.dll
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.core.dll
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.execution.dotnet.dll
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.abstractions.xml
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.assert.pdb
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.assert.xml
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.core.pdb
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.core.xml
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.execution.dotnet.pdb
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\xunit.execution.dotnet.xml
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\obj\Debug\Algorithms.csprojResolveAssemblyReference.cache
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\obj\Debug\Algorithms.dll
+E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\obj\Debug\Algorithms.pdb
