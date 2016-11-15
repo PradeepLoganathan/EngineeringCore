@@ -13,10 +13,9 @@ namespace Algorithms.tests
         [Fact]
         public void BubbleSortTest()
         {
-            List<int> list1 = new List<int>() { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            List<int> list2 = new List<int>() { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            List<int> list1 = Enumerable.Range(1, 100).Reverse().ToList();
+            List<int> list2 = Enumerable.Range(1, 100).ToList();
             list1.BubbleSort();
-            list2.Sort();
 
             Assert.Equal(list1, list2);
             
@@ -26,3 +25,4 @@ namespace Algorithms.tests
     }
 
 }
+
