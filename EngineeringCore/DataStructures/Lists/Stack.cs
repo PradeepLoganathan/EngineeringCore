@@ -29,6 +29,8 @@ namespace DataStructures.Lists
 
         
 
+        
+
         public void Push(T GenericObject)
         {
             _collection.Insert(0, GenericObject);
@@ -37,9 +39,14 @@ namespace DataStructures.Lists
 
         public T Pop()
         {
-            T value = _collection.First();
-            _collection.RemoveAt(0);
-            return value;
+            if (_collection.Count > 0)
+            {
+                T value = _collection.First();
+                _collection.RemoveAt(0);
+                return value;
+            }
+            else
+                throw new Exception("Stack is empty!!");
             
         }
 
