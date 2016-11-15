@@ -18,5 +18,22 @@ namespace DataStructures.tests.ListTests
             var k = MyStack.Pop();
 
         }
+
+        [Fact]
+        public void SinglyLinkedListTest()
+        {
+            ISinglyLinkedList<int> singlylinkedlist = new SinglyLinkedList<int>();
+            ISinglyLinkedNode<int> nodeone = new SinglyLinkedNode<int>(1);
+            ISinglyLinkedNode<int> nodetwo = new SinglyLinkedNode<int>(2);
+            ISinglyLinkedNode<int> nodethree = new SinglyLinkedNode<int>(3);
+            ISinglyLinkedNode<int> nodefour = new SinglyLinkedNode<int>(4);
+
+
+            singlylinkedlist.AddHead(nodeone);
+            singlylinkedlist.AddHead(nodetwo);
+            singlylinkedlist.AddHead(nodethree);
+            singlylinkedlist.AddHead(nodefour);
+
+        }
     }
 }

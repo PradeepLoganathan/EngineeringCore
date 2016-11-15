@@ -13,7 +13,7 @@ namespace DataStructures.Lists
         ISinglyLinkedNode<T> Next { get; set; }
     }
 
-    interface ISinglyLinkedList<T> where T:IComparable<T>
+    public interface ISinglyLinkedList<T> where T:IComparable<T>
     {
         ISinglyLinkedNode<T> Head { get; set; }
 
@@ -55,6 +55,12 @@ namespace DataStructures.Lists
         public SinglyLinkedNode()
         {
             _data = default(T);
+            _next = null;
+        }
+
+        public SinglyLinkedNode(T data)
+        {
+            _data = data;
             _next = null;
         }
 
