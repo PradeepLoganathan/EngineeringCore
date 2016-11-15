@@ -105,5 +105,6 @@
 -r:"C:\Users\Pradeep\.nuget\packages\xunit.extensibility.execution\2.2.0-beta2-build3300\lib\netstandard1.0\xunit.execution.dotnet.dll"
 -r:"C:\Users\Pradeep\.nuget\packages\xunit.runner.reporters\2.2.0-beta2-build3300\lib\netstandard1.1\xunit.runner.reporters.dotnet.dll"
 -r:"C:\Users\Pradeep\.nuget\packages\xunit.runner.utility\2.2.0-beta2-build3300\lib\netstandard1.1\xunit.runner.utility.dotnet.dll"
+-r:"E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms\bin\Debug\netstandard1.6\Algorithms.dll"
 "E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms.tests\Class1.cs"
 "E:\Pradeep\Development\EngineeringCore\EngineeringCore\Algorithms.tests\Properties\AssemblyInfo.cs"
