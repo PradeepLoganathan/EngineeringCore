@@ -18,7 +18,7 @@ namespace Algorithms.Sorting
 
                 for (int j = i + 1; j < collection.Count; j++)
                 {
-                    if (comparer.Compare(collection[i], collection[j]) > 0)
+                    if (comparer.Compare(collection[imin], collection[j]) > 0)
                         imin = j;
                     
                 }
