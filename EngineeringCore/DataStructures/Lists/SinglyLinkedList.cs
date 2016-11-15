@@ -10,7 +10,7 @@ namespace DataStructures.Lists
     public interface ISinglyLinkedNode<T> where T : IComparable<T>
     {
         T Data { get; set; }
-        SinglyLinkedNode<T> Next { get; set; }
+        ISinglyLinkedNode<T> Next { get; set; }
     }
 
     interface ISinglyLinkedList<T> where T:IComparable<T>
@@ -25,9 +25,13 @@ namespace DataStructures.Lists
 
         void AddTail(ISinglyLinkedNode<T> Data);
 
+        void RemoveHead();
+
+        void RemoveTail();
+
         void AddAt(int Index, ISinglyLinkedNode<T> Data);
-        
-        T GetAt(int Index);
+
+        ISinglyLinkedNode<T> GetAt(int Index);
 
         void RemoveAt(int Index);
 
@@ -46,7 +50,7 @@ namespace DataStructures.Lists
     public class SinglyLinkedNode<T> : IComparable<SinglyLinkedNode<T>>, ISinglyLinkedNode<T> where T:IComparable<T>
     {
         private T _data;
-        private SinglyLinkedNode<T> _next;
+        private ISinglyLinkedNode<T> _next;
 
         public SinglyLinkedNode()
         {
@@ -55,7 +59,7 @@ namespace DataStructures.Lists
         }
 
         public T Data { get { return _data; } set { _data = value; } }
-        public SinglyLinkedNode<T> Next { get { return _next; } set { _next = value; } }
+        public ISinglyLinkedNode<T> Next { get { return _next; } set { _next = value; } }
 
        
 
@@ -120,30 +124,29 @@ namespace DataStructures.Lists
 
         void ISinglyLinkedList<T>.AddHead(ISinglyLinkedNode<T> Data)
         {
-            throw new NotImplementedException();
+            Data.Next = _head;
+            _head = Data;
         }
 
         void ISinglyLinkedList<T>.AddTail(ISinglyLinkedNode<T> Data)
         {
-            throw new NotImplementedException();
+            _tail.Next = Data;
+            _tail = Data;
         }
 
-        T ISinglyLinkedList<T>.GetAt(int Index)
+        ISinglyLinkedNode<T> ISinglyLinkedList<T>.GetAt(int Index)
         {
-            throw new NotImplementedException();
-        }
+            if (Index < 0)
+                return new SinglyLinkedNode<T>();
 
-        #endregion
+            ISinglyLinkedNode<T> Temp = null;
 
-        #region IEnumerable implementation
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+            for (int i = 0; i == Index + 1; i++)
+            {
+                Temp = _head.Next;
+            }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            throw new NotImplementedException();
+            return Temp;
         }
 
         void ISinglyLinkedList<T>.Remove(ISinglyLinkedNode<T> Node)
@@ -153,7 +156,7 @@ namespace DataStructures.Lists
 
         void ISinglyLinkedList<T>.RemoveAfter(ISinglyLinkedNode<T> Node)
         {
-            throw new NotImplementedException();
+            Node.Next = Node.Next.Next;
         }
 
         void ISinglyLinkedList<T>.RemoveAt(int Index)
@@ -165,7 +168,31 @@ namespace DataStructures.Lists
         {
             throw new NotImplementedException();
         }
+
+        void ISinglyLinkedList<T>.RemoveHead()
+        {
+            _head = _head.Next;
+        }
+
+        void ISinglyLinkedList<T>.RemoveTail()
+        {
+
+        }
         #endregion
+
+
+        #region IEnumerable implementation
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return new SinglyLinkedListEnumerator<T>();
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            return new SinglyLinkedListEnumerator<T>();
+        }
+        #endregion
+
 
         internal class SinglyLinkedListEnumerator<T> : IEnumerator<T>
         {
