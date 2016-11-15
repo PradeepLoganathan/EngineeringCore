@@ -8,7 +8,7 @@ using Algorithms.Sorting;
 
 namespace Algorithms.tests
 {
-    public class BubbleSorterTest
+    public class SortingTests
     {
         [Fact]
         public void BubbleSortTest()
@@ -20,6 +20,20 @@ namespace Algorithms.tests
             Assert.Equal(list1, list2);
             
         }
+
+
+        [Fact]
+        public void SelectionSortTest()
+        {
+            List<int> list1 = Enumerable.Range(1, 100).ToList();
+            List<int> list2 = Enumerable.Range(1, 100).Reverse().ToList();
+
+            list2.SelectionSort();
+
+            Assert.Equal(list1, list2);
+        }
+
+
 
         
     }
