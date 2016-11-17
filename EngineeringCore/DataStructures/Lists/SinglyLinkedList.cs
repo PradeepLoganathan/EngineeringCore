@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,6 +43,13 @@ namespace DataStructures.Lists
         void Remove(ISinglyLinkedNode<T> Node);
 
     }
+
+    public interface IPrintLinkedList
+    {
+        void PrintLinkedList();
+    }
+
+
     /// <summary>
     /// Definition of a Singly linked node. This node has a data slot and a single pointer slot pointing to the next
     /// singly linked node.
@@ -80,7 +88,12 @@ namespace DataStructures.Lists
 
         
     }
-    public class SinglyLinkedList<T> : ISinglyLinkedList<T>, IEnumerable<T> where T : IComparable<T>
+
+    /// <summary>
+    /// Implements ISinglyLinkedList and defines a singly linked linked list
+    /// </summary>
+    /// <typeparam name="T">Template type</typeparam>
+    public class SinglyLinkedList<T> : ISinglyLinkedList<T>, IPrintLinkedList,IEnumerable<T> where T : IComparable<T>
     {
         private ISinglyLinkedNode<T> _head;
         private ISinglyLinkedNode<T> _tail;
@@ -157,7 +170,17 @@ namespace DataStructures.Lists
 
         void ISinglyLinkedList<T>.Remove(ISinglyLinkedNode<T> Node)
         {
-            throw new NotImplementedException();
+            //empty linked list
+            if (_head == null)
+                return;
+
+            for (ISinglyLinkedNode<T> temp = _head, prev = null; temp.Next != null; prev = temp, temp = temp.Next)
+            {
+                if (object.Equals(temp.Data, Node.Data))
+                    prev.Next = temp.Next;
+                    
+            }
+
         }
 
         void ISinglyLinkedList<T>.RemoveAfter(ISinglyLinkedNode<T> Node)
@@ -197,8 +220,25 @@ namespace DataStructures.Lists
         {
             return new SinglyLinkedListEnumerator<T>();
         }
+
+
         #endregion
 
+        void IPrintLinkedList.PrintLinkedList()
+        {
+            PrintNode(_head);
+        }
+        void PrintNode(ISinglyLinkedNode<T> Node)
+        {
+            if (Node == null)
+            {
+                Debug.Write(" | " + "NULL"+ " | " + "\n");
+                return;
+            }
+
+            Debug.Write(" | " + Node.Data + " | " + "-->");
+            PrintNode(Node.Next);
+        }
 
         internal class SinglyLinkedListEnumerator<T> : IEnumerator<T>
         {

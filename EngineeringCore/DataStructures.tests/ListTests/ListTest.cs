@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
 using Xunit;
 using DataStructures.Lists;
+using Xunit.Abstractions;
 
 namespace DataStructures.tests.ListTests
 {
     public class ListTest
     {
+        private readonly ITestOutputHelper output;
+
+        public ListTest(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
         [Fact]
         public void StackTest()
         {
@@ -23,6 +31,9 @@ namespace DataStructures.tests.ListTests
         public void SinglyLinkedListTest()
         {
             ISinglyLinkedList<int> singlylinkedlist = new SinglyLinkedList<int>();
+
+            IPrintLinkedList printlist;
+
             ISinglyLinkedNode<int> nodeone = new SinglyLinkedNode<int>(1);
             ISinglyLinkedNode<int> nodetwo = new SinglyLinkedNode<int>(2);
             ISinglyLinkedNode<int> nodethree = new SinglyLinkedNode<int>(3);
@@ -33,6 +44,16 @@ namespace DataStructures.tests.ListTests
             singlylinkedlist.AddHead(nodetwo);
             singlylinkedlist.AddHead(nodethree);
             singlylinkedlist.AddHead(nodefour);
+
+            printlist = singlylinkedlist as IPrintLinkedList;
+            printlist.PrintLinkedList();
+
+
+
+
+
+
+
 
         }
     }
