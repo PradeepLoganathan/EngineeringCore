@@ -66,6 +66,7 @@ namespace DataStructures.Lists
         private T _data;
         private ISinglyLinkedNode<T> _next;
 
+        #region constructors
         public SinglyLinkedNode()
         {
             _data = default(T);
@@ -77,6 +78,8 @@ namespace DataStructures.Lists
             _data = data;
             _next = null;
         }
+
+        #endregion
 
         public T Data { get { return _data; } set { _data = value; } }
         public ISinglyLinkedNode<T> Next { get { return _next; } set { _next = value; } }
@@ -201,7 +204,7 @@ namespace DataStructures.Lists
 
             for (ISinglyLinkedNode<T> current = _head, prev = null; current!= null; prev = current, current = current.Next)
             {
-                if (object.Equals(current.Data, Node.Data))
+                if (current.Data.CompareTo(Node.Data) == 0)
                 {
                     prev.Next = current.Next;
                     break;
@@ -228,7 +231,7 @@ namespace DataStructures.Lists
                 return;
 
             //if we need to remove the node before tail then make head and tail the same
-            if (object.Equals(Node.Data, _tail.Data))
+            if (Node.Data.CompareTo(_tail.Data) == 0)
             {
                 _head = _tail;
                 (_tail as IDisposable).Dispose();
@@ -239,7 +242,7 @@ namespace DataStructures.Lists
                 child = currentnode.Next;
                 grandchild = child.Next;
 
-                if (object.Equals(Node.Data, grandchild.Data))
+                if (Node.Data.CompareTo(grandchild.Data) == 0)
                 {
                     currentnode.Next = grandchild;
                     break;
