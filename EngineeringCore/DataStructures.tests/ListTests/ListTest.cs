@@ -32,30 +32,35 @@ namespace DataStructures.tests.ListTests
         {
             ISinglyLinkedList<int> singlylinkedlist = new SinglyLinkedList<int>();
 
+
             IPrintLinkedList printlist;
+            printlist = singlylinkedlist as IPrintLinkedList;
 
             ISinglyLinkedNode<int> nodeone = new SinglyLinkedNode<int>(1);
             ISinglyLinkedNode<int> nodetwo = new SinglyLinkedNode<int>(2);
             ISinglyLinkedNode<int> nodethree = new SinglyLinkedNode<int>(3);
             ISinglyLinkedNode<int> nodefour = new SinglyLinkedNode<int>(4);
-
+           
+            printlist.PrintLinkedList();
 
             singlylinkedlist.AddHead(nodeone);
             singlylinkedlist.AddHead(nodetwo);
             singlylinkedlist.AddHead(nodethree);
             singlylinkedlist.AddHead(nodefour);
 
-            singlylinkedlist.RemoveHead();
-
-            printlist = singlylinkedlist as IPrintLinkedList;
             printlist.PrintLinkedList();
 
+            //singlylinkedlist.RemoveHead();
 
+            //printlist.PrintLinkedList();
 
+            //singlylinkedlist.RemoveBefore(nodetwo);
 
+            singlylinkedlist.ReverseList();
 
+            printlist.PrintLinkedList();
 
-
+            
 
         }
     }

@@ -32,6 +32,10 @@ namespace DataStructures.Lists
 
         void AddAt(int Index, ISinglyLinkedNode<T> Data);
 
+        void InsertAfter(ISinglyLinkedNode<T> Node, T Data);
+
+        void InsertBefore(ISinglyLinkedNode<T> Node, T Data);
+
         ISinglyLinkedNode<T> GetAt(int Index);
 
         void RemoveAt(int Index);
@@ -41,6 +45,8 @@ namespace DataStructures.Lists
         void RemoveBefore(ISinglyLinkedNode<T> Node);
 
         void Remove(ISinglyLinkedNode<T> Node);
+
+        void ReverseList();
 
     }
 
@@ -55,7 +61,7 @@ namespace DataStructures.Lists
     /// singly linked node.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class SinglyLinkedNode<T> : IComparable<SinglyLinkedNode<T>>, ISinglyLinkedNode<T> where T:IComparable<T>
+    public class SinglyLinkedNode<T> : IDisposable, IComparable<SinglyLinkedNode<T>>, ISinglyLinkedNode<T> where T:IComparable<T>
     {
         private T _data;
         private ISinglyLinkedNode<T> _next;
@@ -86,7 +92,33 @@ namespace DataStructures.Lists
 
         }
 
-        
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    IDisposable disposable = _data as IDisposable;
+                    if (disposable != null)
+                        disposable.Dispose();
+
+                }
+
+                disposedValue = true;
+            }
+        }
+
+       
+        public void Dispose()
+        {  
+            Dispose(true);
+        }
+        #endregion
+
+
     }
 
     /// <summary>
@@ -188,7 +220,29 @@ namespace DataStructures.Lists
 
         void ISinglyLinkedList<T>.RemoveBefore(ISinglyLinkedNode<T> Node)
         {
-            throw new NotImplementedException();
+            //cannot remove before head
+            if (object.Equals(Node.Data, _head.Data))
+                return;
+
+            //if we need to remove the node before tail then make head and tail the same
+            if (object.Equals(Node.Data, _tail.Data))
+            {
+                _head = _tail;
+                (_tail as IDisposable).Dispose();
+            }
+
+            for (ISinglyLinkedNode<T> currentnode = _head, child = null, grandchild = null; currentnode != null;  currentnode = currentnode.Next)
+            {
+                child = currentnode.Next;
+                grandchild = child.Next;
+
+                if (object.Equals(Node.Data, grandchild.Data))
+                {
+                    currentnode.Next = grandchild;
+                    break;
+                }
+                
+            }
         }
 
         void ISinglyLinkedList<T>.RemoveHead()
@@ -204,6 +258,31 @@ namespace DataStructures.Lists
 
         void ISinglyLinkedList<T>.RemoveTail()
         {
+            ISinglyLinkedNode<T> currentnode = _head;
+
+            //check if there is only one node. Remove head then
+            if (_head.Next == null)
+            {
+                _head = null;
+                return;
+            }
+
+            //if there are only two nodes set heads next to null to remove tail
+            if (_head.Next != null && _head.Next.Next == null)
+            {
+                _head.Next = null;
+                return;
+            }
+
+            for (ISinglyLinkedNode<T> current = _head, child = current.Next, grandchild = child.Next; current != null ; current = current.Next)
+            {
+
+
+            }
+
+
+
+
 
         }
         #endregion
@@ -238,6 +317,35 @@ namespace DataStructures.Lists
             Debug.Write(" | " + Node.Data + " | " + "-->");
 
             PrintNode(Node.Next);
+        }
+
+        void ISinglyLinkedList<T>.InsertAfter(ISinglyLinkedNode<T> Node, T Data)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISinglyLinkedList<T>.InsertBefore(ISinglyLinkedNode<T> Node, T Data)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISinglyLinkedList<T>.ReverseList()
+        {
+            //               < __ < __ < __ __: reversedPart: head
+            //                 (__)__ __ __
+            //head :   current:      >  >  >
+            ISinglyLinkedNode <T> reversedPart = null;
+            ISinglyLinkedNode<T> current = _head;
+
+            while (current != null)
+            {
+                ISinglyLinkedNode<T> next = current.Next;
+                current.Next = reversedPart;
+                reversedPart = current;
+                current = next;
+            }
+
+            _head = reversedPart;
         }
 
         internal class SinglyLinkedListEnumerator<T> : IEnumerator<T>
