@@ -183,11 +183,11 @@ namespace DataStructures.Lists
             if (Index < 0)
                 return new SinglyLinkedNode<T>();
 
-            ISinglyLinkedNode<T> Temp = null;
+            ISinglyLinkedNode<T> Temp = _head;
 
-            for (int i = 0; i == Index + 1; i++)
+            for (int i = 0; i < Index - 1; i++)
             {
-                Temp = _head.Next;
+                Temp = Temp.Next;
             }
 
             return Temp;
@@ -199,10 +199,13 @@ namespace DataStructures.Lists
             if (_head == null)
                 return;
 
-            for (ISinglyLinkedNode<T> temp = _head, prev = null; temp.Next != null; prev = temp, temp = temp.Next)
+            for (ISinglyLinkedNode<T> current = _head, prev = null; current!= null; prev = current, current = current.Next)
             {
-                if (object.Equals(temp.Data, Node.Data))
-                    prev.Next = temp.Next;
+                if (object.Equals(current.Data, Node.Data))
+                {
+                    prev.Next = current.Next;
+                    break;
+                }
                     
             }
 
@@ -214,8 +217,8 @@ namespace DataStructures.Lists
         }
 
         void ISinglyLinkedList<T>.RemoveAt(int Index)
-        {
-            throw new NotImplementedException();
+        {   
+            (this as ISinglyLinkedList<T>).Remove((this as ISinglyLinkedList<T>).GetAt(Index));
         }
 
         void ISinglyLinkedList<T>.RemoveBefore(ISinglyLinkedNode<T> Node)

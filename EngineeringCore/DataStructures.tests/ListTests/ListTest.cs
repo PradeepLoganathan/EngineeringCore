@@ -40,13 +40,23 @@ namespace DataStructures.tests.ListTests
             ISinglyLinkedNode<int> nodetwo = new SinglyLinkedNode<int>(2);
             ISinglyLinkedNode<int> nodethree = new SinglyLinkedNode<int>(3);
             ISinglyLinkedNode<int> nodefour = new SinglyLinkedNode<int>(4);
-           
+
+            
             printlist.PrintLinkedList();
 
             singlylinkedlist.AddHead(nodeone);
             singlylinkedlist.AddHead(nodetwo);
             singlylinkedlist.AddHead(nodethree);
             singlylinkedlist.AddHead(nodefour);
+
+            printlist.PrintLinkedList();
+
+            ISinglyLinkedNode<int> temp = singlylinkedlist.GetAt(2);
+
+            singlylinkedlist.RemoveAt(2);
+
+            //singlylinkedlist.RemoveAfter(temp);
+            //singlylinkedlist.Remove(temp);
 
             printlist.PrintLinkedList();
 
