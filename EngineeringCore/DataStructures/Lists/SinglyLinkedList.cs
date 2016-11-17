@@ -16,9 +16,9 @@ namespace DataStructures.Lists
 
     public interface ISinglyLinkedList<T> where T:IComparable<T>
     {
-        ISinglyLinkedNode<T> Head { get; set; }
+        ISinglyLinkedNode<T> Head { get; }
 
-        ISinglyLinkedNode<T> Tail { get; set; }
+        ISinglyLinkedNode<T> Tail { get; }
 
         void Add(ISinglyLinkedNode<T> Data);
 
@@ -112,10 +112,7 @@ namespace DataStructures.Lists
                 return _head;
             }
 
-            set
-            {
-                _head = value;
-            }
+           
         }
 
         ISinglyLinkedNode<T> ISinglyLinkedList<T>.Tail
@@ -124,16 +121,12 @@ namespace DataStructures.Lists
             {
                 return _tail;
             }
-
-            set
-            {
-                _tail = value;
-            }
+           
         }
 
         void ISinglyLinkedList<T>.Add(ISinglyLinkedNode<T> Data)
         {
-            throw new NotImplementedException();
+            (this as ISinglyLinkedList<T>).AddHead(Data);
         }
 
         void ISinglyLinkedList<T>.AddAt(int Index, ISinglyLinkedNode<T> Data)
@@ -200,7 +193,13 @@ namespace DataStructures.Lists
 
         void ISinglyLinkedList<T>.RemoveHead()
         {
-            _head = _head.Next;
+            lock (_head)
+            {
+                lock (_head.Next)
+                {
+                    _head = _head.Next;
+                }
+            }
         }
 
         void ISinglyLinkedList<T>.RemoveTail()
@@ -237,6 +236,7 @@ namespace DataStructures.Lists
             }
 
             Debug.Write(" | " + Node.Data + " | " + "-->");
+
             PrintNode(Node.Next);
         }
 

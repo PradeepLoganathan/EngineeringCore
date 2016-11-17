@@ -45,6 +45,8 @@ namespace DataStructures.tests.ListTests
             singlylinkedlist.AddHead(nodethree);
             singlylinkedlist.AddHead(nodefour);
 
+            singlylinkedlist.RemoveHead();
+
             printlist = singlylinkedlist as IPrintLinkedList;
             printlist.PrintLinkedList();
 
