@@ -282,6 +282,13 @@ namespace DataStructures.Lists
             _head = reversedPart;
         }
 
+        ISinglyLinkedNode<T> ReverseList(ISinglyLinkedNode<T> Prev, ISinglyLinkedNode<T> Current)
+        {
+            ISinglyLinkedNode<T> next = Current.Next;
+            Current.Next = Prev;
+            return (next == null) ? Current : ReverseList(Current, next);                
+        }
+
         internal class SinglyLinkedListEnumerator<T> : IEnumerator<T>
         {
             public T Current
