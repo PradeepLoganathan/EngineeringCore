@@ -178,6 +178,11 @@ namespace DataStructures.Trees
                 return _root;
             }
         }
+        /// <summary>
+        /// Add a node
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <returns></returns>
         IBinarySearchTreeNode<T> IBinarySearchTree<T>.AddNode(T Value)
         {
             IBinarySearchTreeNode<T> node = new BinarySearchTreeNode<T>(Value);
@@ -214,6 +219,11 @@ namespace DataStructures.Trees
 
             return node;
         }
+        /// <summary>
+        /// Find a node
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <returns></returns>
         IBinarySearchTreeNode<T> IBinarySearchTree<T>.FindNode(T Value)
         {
             //Root itself is null
@@ -234,15 +244,14 @@ namespace DataStructures.Trees
 
             return current;
         }
-
+        /// <summary>
+        /// Remove a node from the Binary search tree
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <returns></returns>
         IBinarySearchTreeNode<T> IBinarySearchTree<T>.RemoveNode(T Value)
         {
-            return this.Remove(_root, Value);
-        }
-
-        private IBinarySearchTreeNode<T> Remove(IBinarySearchTreeNode<T> Root, T value)
-        {
-            IBinarySearchTreeNode<T> CurrentNode = (this as IBinarySearchTree<T>).FindNode(value);
+            IBinarySearchTreeNode<T> CurrentNode = (this as IBinarySearchTree<T>).FindNode(Value);
 
             if (CurrentNode == null)
                 return null;
@@ -275,7 +284,6 @@ namespace DataStructures.Trees
 
             return CurrentNode;
         }
-
         /// <summary>
         /// Find the minium value below this node
         /// </summary>
