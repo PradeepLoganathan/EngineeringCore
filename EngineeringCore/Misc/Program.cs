@@ -34,6 +34,7 @@ namespace ConsoleApplication
             return false;
         }
 
+        //check if second string is a permutations of first string. e.g EAT and TEA
         public static bool IsPermutation(string first, string second)
         {
             if(first.Length != second.Length)
