@@ -8,5 +8,16 @@ namespace Algorithms.Graphs
 {
     class BreadthFirstSearch
     {
+        string s;
+
+        public BreadthFirstSearch()
+        {
+            this.te();
+        }
+
+        public test()
+        {
+
+        }
     }
 }
